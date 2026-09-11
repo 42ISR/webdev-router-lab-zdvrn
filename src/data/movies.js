@@ -90,3 +90,7 @@ export const movies = [
 export function getMovieById(id) {
   return movies.find((movie) => movie.id === id);
 }
+
+export function labelForGenres(genreId) {
+  return genres.find(g => g.id === genreId)?.label || genreId;
+}
