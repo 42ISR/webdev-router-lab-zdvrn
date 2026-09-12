@@ -8,6 +8,15 @@ export default function Header() {
     event.preventDefault();
   }
 
+  const navigate = useNavigate()
+
+  function handleSearchKeyDown(e) {
+    if (e.key === 'Enter' && e.target.value.trim()) {
+      navigate('/search?q=' + encodeURIComponent(e.target.value.trim()))
+      e.target.value = '';
+    }
+  }
+
   return (
     <header className="header">
       <div className="header-inner">
@@ -23,7 +32,7 @@ export default function Header() {
 
         </nav>
 
-        <form className="search" onSubmit={handleSubmit}>
+        <form className="search" onSubmit={handleSubmit} onKeyDown={handleSearchKeyDown}>
           <span className="search-icon">⌕</span>
           <input
             value={query}

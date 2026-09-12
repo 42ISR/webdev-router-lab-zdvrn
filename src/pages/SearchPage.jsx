@@ -1,8 +1,13 @@
 import MovieCard from '../components/MovieCard.jsx';
 import { movies } from '../data/movies.js';
+import { useSearchParams} from "react-router-dom"
 
 export default function SearchPage() {
-  const query = '';
+  
+  const [searchParams] = useSearchParams()
+  const query = (searchParams.get('q') || '').trim().toLowerCase()
+  
+  
 
   const results = query
     ? movies.filter((movie) =>

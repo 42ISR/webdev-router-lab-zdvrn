@@ -4,7 +4,7 @@ import { useSearchParams, Link } from "react-router-dom";
 export default function GenreFilter({ genres }) {
 
   const [searchParams, setSearchParams] = useSearchParams()
-  const selectedGenre = searchParams.get("genres") || ""
+  const selectedGenre = searchParams.get("genre") || "";
 
   const handleSelect = (genreId) => {
     setSearchParams(genreId ? {genre: genreId} : {})
@@ -16,8 +16,7 @@ export default function GenreFilter({ genres }) {
         <button
           type="button"
           key={genre.id || i}
-          to={genre.id ? `/movies?genre=${genre.id}` : '/movies'}
-          className={'genre-btn' + (genre.id === selectedGenre ? ' active' : '')}
+          className={`genre-btn ${String(genre.id) === selectedGenre ? ' active' : ''}`}
           onClick = {() => handleSelect(genre.id)}
         >
           {genre.label}

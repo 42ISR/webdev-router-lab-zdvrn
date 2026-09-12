@@ -6,9 +6,9 @@ import { useSearchParams } from 'react-router-dom';
 
 export default function MoviesPage() {
   const [searchParams] = useSearchParams()
-  const selectedGenre = searchParams.get("genres") || ""
+  const selectedGenre = searchParams.get("genre") || ""
   const visibleMovies = selectedGenre
-    ? movies.filter(m => m.genres === selectedGenre)
+    ? movies.filter(m => m.genre === selectedGenre)
     : movies;
 
   return (
